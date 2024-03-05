@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+define('ROOT', dirname(__FILE__, 2)."/public");
+define('APP_ROOT', dirname(__FILE__, 2));
+define('LEAN_CLI', true);
+
+if (! file_exists($composer = APP_ROOT . '/vendor/autoload.php')) {
+    throw new RuntimeException('Install dependencies to run this Leantime CLI.');
+}
+
+require $composer;
+
+Leantime\Core\Bootloader::getInstance()->boot();
